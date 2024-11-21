@@ -9,13 +9,8 @@
 ; 
 ; paul hocker (paul@spocker.net)
 ;
-; v1
+; see readme for more information
 ;
-; features:
-;
-; - open file from menu
-; - open file from file manager
-
 
         *= appbase
 
