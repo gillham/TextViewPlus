@@ -1,41 +1,76 @@
+"""
+    Standalone make script written
+    in Python. There are no other packages
+    needed to run it other than plain vanilla
+    Python. 
+
+    Requires Python 3.4+
+
+    USAGE
+
+    make.py [final]
+
+    The script can be run on its own, in which case it will create
+    a developer build. 
+
+    There is one optional argument for `make.py`:
+    - `final` will prepare the `msg.txt` and `about.txt` for the final
+      release. Leaving it blank will provide helpful information for
+      the user to give to the developer.
+
+"""
+
 import os
 import pathlib
 import datetime
 import subprocess
 import sys
 
-myfile = ".build"
-mybuild = 0
-mydate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+VERSION = "1.0"
+MAKE_OPTION = "none"
+AUTHOR = "Paul Hocker"
 
-myrun = subprocess.run(["C:\\Users\\paul\\Me\\Tools\\TMPx\\windows-i386\\tmpx.exe", "build.asm", "-l", "build.l"], check=False)
+# increase build number
 
-with open(myfile, "r", encoding=None) as f:
+buildnumber_file = ".build"
+buildnumber = 0
+builddate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+
+with open(buildnumber_file, "r", encoding=None) as f:
 
     data = f.read()
-    mybuild = int(data)
+    buildnumber = int(data)
 
-mybuild += 1
+buildnumber += 1
 
-with open(myfile, "w", encoding=None) as f:
-    f.write(str(mybuild))
+with open(buildnumber_file, "w", encoding=None) as f:
+    f.write(str(buildnumber))
 
-print(sys.argv)
+# developer build settings
 
-MAKE_OPTION = "none"
+MSG = f"Build {buildnumber} on {builddate}"
+ABOUT = f"TextView+\n{VERSION}\n2024\n{buildnumber}\n"
+
+print(f"Build number {buildnumber}")
 
 if len(sys.argv) > 1:
+
     MAKE_OPTION = sys.argv[1]
 
-MSG = " If you don't like to read, you haven't  found the right book! - J.K Rowling"
-MSG_FILE = 'msg.txt'
+# make about and msg files for final build
 
-if MAKE_OPTION == 'none':
-    MSG = f"Build {mybuild} on {mydate}"
+if MAKE_OPTION == 'final':
 
-print(MSG)
+    print("Updating ABOUT and MSG for final build")
 
-with open(MSG_FILE, "w", encoding=None) as f:
+    MSG = " If you don't like to read, you haven't  found the right book! - J.K Rowling"
+    ABOUT = f"TextView+\n{VERSION}\n2024\n{AUTHOR}\n"
+
+message_file = "msg.txt"
+with open(message_file, "w", encoding=None) as f:
     f.write(MSG)
 
+about_file = "about.txt"
+with open(about_file, "w", encoding=None) as f:
+   f.write(ABOUT)
 
