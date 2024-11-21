@@ -1,7 +1,7 @@
 # TextViewPlus
 
 ## Installation
-- copy the TextView+.car to the Application directory using File Manager
+- copy the `TextView+.car` to the Application directory using File Manager
 - double-click the `TextView+.car` in File Manager
 - click the EXTRACT when the INSTALLER utility opens
 
