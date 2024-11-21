@@ -1,0 +1,16 @@
+.vscode
+*.car
+*.d64
+*.a
+*.l
+*.t
+*.o
+*.m
+*.prg
+*.zip
+__pycache__
+archive
+os
+temp
+test
+.source.txt

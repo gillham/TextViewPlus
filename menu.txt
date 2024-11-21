@@ -1,0 +1,11 @@
+File;d
+Open:2oo
+Close:2cc
+*
+Go Home:6h!
+View;d
+PETSCII:2pp
+ASCII:2aa
+*
+Wrap:6ww
+
