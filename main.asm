@@ -1310,7 +1310,6 @@ welcome
 
 .byte $0d,$f6,$f1
 .text "[ Welcome to TextView+ ]"
-.repeat 21,$0d
 .byte $0d,$00
 
 err1
